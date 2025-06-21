@@ -1,0 +1,44 @@
+<meta charset="UTF-8">
+<script>
+
+    var notas1 = [];
+    var notas2 = [];
+    var media = [];
+    var n = parseInt(prompt("Defina a quantidade de pares de notas (A1 e A2) a serem armazenadas: "));
+    var aprovados = 0;
+
+    for (var i = 0; i < n; i++) {
+        notas1[i] = parseFloat(prompt("Digite a nota do Aluno " + (i+1) + " da Avaliação 1 (use . no lugar da vírgula):"));
+    }
+
+     for (var j = 0; j < n; j++) {
+        notas2[j] = parseFloat(prompt("Digite a nota do Aluno " + (j+1) + " da Avaliação 2 (use . no lugar da vírgula):"));
+    }
+
+    for (var k = 0; k < n; k++){
+        media[k] = (notas1[k] + notas2[k])/2;
+    }
+
+   for (var i = 0; i < n - 1; i++) {
+    for (var j = 0; j < n - i - 1; j++) {
+        if (media[j] > media[j + 1]) {
+            var aux = media[j];
+            media[j] = media[j + 1];
+            media[j + 1] = aux;
+        }
+    }
+}
+
+for (var i = 0; i < n; i++) {
+        if (media[i] > 5.0) {
+            aprovados++; }}
+
+
+    document.write("Notas avaliação 1: " + notas1 + "<br>");
+    document.write("Notas avaliação 2: " + notas2 + "<br>");
+    document.write("Médias: " + media + "<br> <br>");
+    document.write("Ordem das médias da menor para a maior: <br> " + media.join("<br>")	+ "<br> <br>");
+    document.write("Quantidade de alunos aprovados (Média maior que 5.0): " +aprovados + "<br>");
+    document.write("Quantidade de alunos reprovados (Média menor que 5.0): " + (n-aprovados) + "<br>");
+
+</script>
